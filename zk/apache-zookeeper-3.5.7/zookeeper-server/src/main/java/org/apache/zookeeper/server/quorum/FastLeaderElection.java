@@ -69,7 +69,7 @@ public class FastLeaderElection implements Election {
      */
 
     final static int maxNotificationInterval = 60000;
-    
+
     /**
      * Connection manager. Fast leader election uses TCP for
      * communication between peers, and QuorumCnxManager manages
@@ -118,7 +118,7 @@ public class FastLeaderElection implements Election {
          * Address of sender
          */
         long sid;
-        
+
         QuorumVerifier qv;
         /*
          * epoch of the proposed leader
@@ -224,6 +224,7 @@ public class FastLeaderElection implements Election {
                 this.manager = manager;
             }
 
+            @Override
             public void run() {
 
                 Message response;
@@ -232,7 +233,9 @@ public class FastLeaderElection implements Election {
                     try {
                         // 从接收队列获取消息,如果不为null 则进行处理,负责跳过
                         response = manager.pollRecvQueue(3000, TimeUnit.MILLISECONDS);
-                        if(response == null) continue;
+                        if(response == null) {
+                            continue;
+                        }
 
                         // The current protocol and two previous generations all send at least 28 bytes
                         if (response.buffer.capacity() < 28) {
@@ -247,7 +250,7 @@ public class FastLeaderElection implements Election {
 
                         // this is the backwardCompatibility mode for no version information
                         boolean backCompatibility40 = (response.buffer.capacity() == 40);
-                        
+
                         response.buffer.clear();
 
                         // Instantiate Notification and set its attributes
@@ -266,7 +269,7 @@ public class FastLeaderElection implements Election {
                                 /*
                                  * Version added in 3.4.6
                                  */
-                                
+
                                 version = response.buffer.getInt();
                             } else {
                                 LOG.info("Backward compatibility mode (36 bits), server id: {}", response.sid);
@@ -284,7 +287,7 @@ public class FastLeaderElection implements Election {
                             byte b[] = new byte[configLength];
 
                             response.buffer.get(b);
-                                                       
+
                             synchronized(self) {
                                 try {
                                     rqv = self.configFromString(new String(b));
@@ -312,11 +315,11 @@ public class FastLeaderElection implements Election {
                                } catch (ConfigException e) {
                                    LOG.error("Something went wrong while processing config received from {}", response.sid);
                                }
-                            }                          
+                            }
                         } else {
                             LOG.info("Backward compatibility mode (before reconfig), server id: {}", response.sid);
                         }
-                       
+
                         /*
                          * If it is from a non-voting server (such as an observer or
                          * a non-voting follower), respond right away.
@@ -456,13 +459,15 @@ public class FastLeaderElection implements Election {
                 this.manager = manager;
             }
 
+            @Override
             public void run() {
                 while (!stop) {
                     try {
                         // 从发送队列中获取消息,如果有进行发送没有则跳过
                         ToSend m = sendqueue.poll(3000, TimeUnit.MILLISECONDS);
-                        if(m == null) continue;
-
+                        if(m == null) {
+                            continue;
+                        }
                         process(m);
                     } catch (InterruptedException e) {
                         break;
@@ -483,7 +488,7 @@ public class FastLeaderElection implements Election {
                                                     m.electionEpoch,
                                                     m.peerEpoch,
                                                     m.configData);
-
+                // 发送消息给sid  投给谁就发送给谁
                 manager.toSend(m.sid, requestBuffer);
 
             }
@@ -688,6 +693,7 @@ public class FastLeaderElection implements Election {
                       " (n.round), " + sid + " (recipient), " + self.getId() +
                       " (myid), 0x" + Long.toHexString(proposedEpoch) + " (n.peerEpoch)");
             }
+            // 将放入到发送队列底部 , WorkerSender#run 方法中 弹出数据进行发送
             sendqueue.offer(notmsg);
         }
     }
@@ -735,7 +741,7 @@ public class FastLeaderElection implements Election {
     /**
      * Termination predicate. Given a set of votes, determines if have
      * sufficient to declare the end of the election round.
-     * 
+     *
      * @param votes
      *            Set of votes
      * @param vote
@@ -837,7 +843,7 @@ public class FastLeaderElection implements Election {
      * @return long
      */
     private long getInitId(){
-        if(self.getQuorumVerifier().getVotingMembers().containsKey(self.getId()))       
+        if(self.getQuorumVerifier().getVotingMembers().containsKey(self.getId()))
             return self.getId();
         else return Long.MIN_VALUE;
     }
@@ -893,19 +899,22 @@ public class FastLeaderElection implements Election {
            self.start_fle = Time.currentElapsedTime();
         }
         try {
+            // 接收选票
             HashMap<Long, Vote> recvset = new HashMap<Long, Vote>();
-
+            // 发送选票
             HashMap<Long, Vote> outofelection = new HashMap<Long, Vote>();
 
             int notTimeout = finalizeWait;
 
             synchronized(this){
                 logicalclock.incrementAndGet();
+                // 更新选票信息
                 updateProposal(getInitId(), getInitLastLoggedZxid(), getPeerEpoch());
             }
 
             LOG.info("New election. My id =  " + self.getId() +
                     ", proposed zxid=0x" + Long.toHexString(proposedZxid));
+            // 当选票发生改变的时候 发送给其余server (peers同事们呐)
             sendNotifications();
 
             /*
@@ -939,7 +948,7 @@ public class FastLeaderElection implements Election {
                     notTimeout = (tmpTimeOut < maxNotificationInterval?
                             tmpTimeOut : maxNotificationInterval);
                     LOG.info("Notification time out: " + notTimeout);
-                } 
+                }
                 else if (validVoter(n.sid) && validVoter(n.leader)) {
                     /*
                      * Only proceed if the vote comes from a replica in the current or next
@@ -1005,7 +1014,7 @@ public class FastLeaderElection implements Election {
                                 self.setPeerState((proposedLeader == self.getId()) ?
                                         ServerState.LEADING: learningState());
                                 Vote endVote = new Vote(proposedLeader,
-                                        proposedZxid, logicalclock.get(), 
+                                        proposedZxid, logicalclock.get(),
                                         proposedEpoch);
                                 leaveInstance(endVote);
                                 return endVote;
@@ -1028,7 +1037,7 @@ public class FastLeaderElection implements Election {
                                             && checkLeader(outofelection, n.leader, n.electionEpoch)) {
                                 self.setPeerState((n.leader == self.getId()) ?
                                         ServerState.LEADING: learningState());
-                                Vote endVote = new Vote(n.leader, 
+                                Vote endVote = new Vote(n.leader,
                                         n.zxid, n.electionEpoch, n.peerEpoch);
                                 leaveInstance(endVote);
                                 return endVote;
@@ -1039,7 +1048,7 @@ public class FastLeaderElection implements Election {
                          * Before joining an established ensemble, verify that
                          * a majority are following the same leader.
                          */
-                        outofelection.put(n.sid, new Vote(n.version, n.leader, 
+                        outofelection.put(n.sid, new Vote(n.version, n.leader,
                                 n.zxid, n.electionEpoch, n.peerEpoch, n.state));
                         if (termPredicate(outofelection, new Vote(n.version, n.leader,
                                 n.zxid, n.electionEpoch, n.peerEpoch, n.state))
@@ -1049,7 +1058,7 @@ public class FastLeaderElection implements Election {
                                 self.setPeerState((n.leader == self.getId()) ?
                                         ServerState.LEADING: learningState());
                             }
-                            Vote endVote = new Vote(n.leader, n.zxid, 
+                            Vote endVote = new Vote(n.leader, n.zxid,
                                     n.electionEpoch, n.peerEpoch);
                             leaveInstance(endVote);
                             return endVote;

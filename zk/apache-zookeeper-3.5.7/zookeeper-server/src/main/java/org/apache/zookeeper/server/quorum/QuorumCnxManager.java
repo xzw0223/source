@@ -418,10 +418,12 @@ public class QuorumCnxManager {
 
             // Sending id and challenge
             // represents protocol version (in other words - message type)
+            // 发送协议版本 id(myid)
             dout.writeLong(PROTOCOL_VERSION);
             dout.writeLong(self.getId());
             String addr = formatInetAddr(self.getElectionAddress());
             byte[] addr_bytes = addr.getBytes();
+            // 发送地址
             dout.writeInt(addr_bytes.length);
             dout.write(addr_bytes);
             dout.flush();
@@ -442,6 +444,7 @@ public class QuorumCnxManager {
         }
 
         // If lost the challenge, then drop the new connection
+        // TODO 如果如果发现自己的id比对方的id小 则放弃连接
         if (sid > self.getId()) {
             LOG.info("Have smaller server identifier, so dropping the " +
                     "connection: (" + sid + ", " + self.getId() + ")");
@@ -454,13 +457,15 @@ public class QuorumCnxManager {
 
             SendWorker vsw = senderWorkerMap.get(sid);
 
-            if(vsw != null)
+            if(vsw != null) {
                 vsw.finish();
+            }
 
             senderWorkerMap.put(sid, sw);
             queueSendMap.putIfAbsent(sid, new ArrayBlockingQueue<ByteBuffer>(
                     SEND_CAPACITY));
 
+            // 启动发送和接收消息的线程
             sw.start();
             rw.start();
 
@@ -617,6 +622,7 @@ public class QuorumCnxManager {
          */
         if (this.mySid == sid) {
              b.position(0);
+             // 如果是发给自己,添加到自己的 接收队列
              addToRecvQueue(new Message(b.duplicate(), sid));
             /*
              * Otherwise send to the corresponding thread to send.
@@ -625,6 +631,7 @@ public class QuorumCnxManager {
              /*
               * Start a new connection if doesn't have one already.
               */
+             // 发送到指定sid的队列中
              ArrayBlockingQueue<ByteBuffer> bq = new ArrayBlockingQueue<ByteBuffer>(
                 SEND_CAPACITY);
              ArrayBlockingQueue<ByteBuffer> oldq = queueSendMap.putIfAbsent(sid, bq);
@@ -633,6 +640,7 @@ public class QuorumCnxManager {
              } else {
                  addToSendQueue(bq, b);
              }
+             // 与sid进行连接,如果没有连接的话
              connectOne(sid);
 
         }
@@ -649,9 +657,10 @@ public class QuorumCnxManager {
             LOG.debug("There is a connection already for server " + sid);
             return true;
         }
-
+        // 如果连接不存在 则创建一个连接
         Socket sock = null;
         try {
+            // 在这里只是创建了一个socket
             LOG.debug("Opening channel to server " + sid);
             if (self.isSslQuorum()) {
                  SSLSocket sslSock = self.getX509Util().createSSLSocket();
@@ -663,7 +672,9 @@ public class QuorumCnxManager {
              } else {
                  sock = new Socket();
                  setSockOpts(sock);
-                 sock.connect(electionAddr, cnxTO);
+
+                // 创建一个socket 连接到 electionAddr 地址
+                sock.connect(electionAddr, cnxTO);
 
              }
              LOG.debug("Connected to server " + sid);
@@ -720,15 +731,17 @@ public class QuorumCnxManager {
             Map<Long, QuorumPeer.QuorumServer> lastProposedView = lastSeenQV.getAllMembers();
             if (lastCommittedView.containsKey(sid)) {
                 knownId = true;
-                if (connectOne(sid, lastCommittedView.get(sid).electionAddr))
+                if (connectOne(sid, lastCommittedView.get(sid).electionAddr)) {
                     return;
+                }
             }
             if (lastSeenQV != null && lastProposedView.containsKey(sid)
                     && (!knownId || (lastProposedView.get(sid).electionAddr !=
                     lastCommittedView.get(sid).electionAddr))) {
                 knownId = true;
-                if (connectOne(sid, lastProposedView.get(sid).electionAddr))
+                if (connectOne(sid, lastProposedView.get(sid).electionAddr)) {
                     return;
+                }
             }
             if (!knownId) {
                 LOG.warn("Invalid server id: " + sid);
@@ -1063,6 +1076,9 @@ public class QuorumCnxManager {
             return recvWorker;
         }
 
+        /**
+         * 用于关闭线程
+         */
         synchronized boolean finish() {
             LOG.debug("Calling finish for " + sid);
 
@@ -1154,6 +1170,7 @@ public class QuorumCnxManager {
 
                         if(b != null){
                             lastMessageSent.put(sid, b);
+                            // 发送数据
                             send(b);
                         }
                     } catch (InterruptedException e) {
@@ -1272,6 +1289,7 @@ public class QuorumCnxManager {
      */
     private void addToSendQueue(ArrayBlockingQueue<ByteBuffer> queue,
           ByteBuffer buffer) {
+        // 如果队列容量满了,则删除一个元素 ,然后在添加新的消息
         if (queue.remainingCapacity() == 0) {
             try {
                 queue.remove();
@@ -1282,6 +1300,7 @@ public class QuorumCnxManager {
             }
         }
         try {
+            // 添加消息到发送队列
             queue.add(buffer);
         } catch (IllegalStateException ie) {
             // This should never happen
