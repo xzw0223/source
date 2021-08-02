@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.netflix.fenzo:fenzo-core:0.10.1">
+    <CLASSES>
+      <root url="jar://D:/my_maven_local_repository/com/netflix/fenzo/fenzo-core/0.10.1/fenzo-core-0.10.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/my_maven_local_repository/com/netflix/fenzo/fenzo-core/0.10.1/fenzo-core-0.10.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/my_maven_local_repository/com/netflix/fenzo/fenzo-core/0.10.1/fenzo-core-0.10.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
