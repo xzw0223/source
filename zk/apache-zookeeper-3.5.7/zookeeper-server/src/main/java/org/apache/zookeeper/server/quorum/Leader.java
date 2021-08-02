@@ -391,6 +391,8 @@ public class Leader {
                     Socket s = null;
                     boolean error = false;
                     try {
+                        // 等待接受数据
+                        // follower的注册
                         s = ss.accept();
 
                         // start with the initLimit, once the ack is processed
@@ -470,12 +472,14 @@ public class Leader {
 
         try {
             self.tick.set(0);
+            // 恢复数据
             zk.loadData();
 
             leaderStateSummary = new StateSummary(self.getCurrentEpoch(), zk.getLastProcessedZxid());
 
             // Start thread that waits for connection requests from
             // new followers.
+            // 启动等待连接新follower的线程
             cnxAcceptor = new LearnerCnxAcceptor();
             cnxAcceptor.start();
 

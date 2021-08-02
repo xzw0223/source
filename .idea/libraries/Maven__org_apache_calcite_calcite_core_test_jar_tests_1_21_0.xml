@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.calcite:calcite-core:test-jar:tests:1.21.0">
+    <CLASSES>
+      <root url="jar://D:/my_maven_local_repository/org/apache/calcite/calcite-core/1.21.0/calcite-core-1.21.0-tests.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/my_maven_local_repository/org/apache/calcite/calcite-core/1.21.0/calcite-core-1.21.0-test-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/my_maven_local_repository/org/apache/calcite/calcite-core/1.21.0/calcite-core-1.21.0-test-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

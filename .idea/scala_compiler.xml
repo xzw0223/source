@@ -14,5 +14,20 @@
         <plugin path="D:\my_maven_local_repository\org\scalamacros\paradise_2.11.12\2.1.0\paradise_2.11.12-2.1.0.jar" />
       </plugins>
     </profile>
+    <profile name="Maven 3" modules="flink-gelly-examples_2.11 (1),flink-gelly-scala_2.11 (1),flink-scala-shell_2.11 (1),flink-streaming-scala_2.11 (1)">
+      <parameters>
+        <parameter value="-nobootcp" />
+        <parameter value="-target:jvm-1.8" />
+      </parameters>
+      <plugins>
+        <plugin path="D:\my_maven_local_repository\org\scalamacros\paradise_2.11.12\2.1.0\paradise_2.11.12-2.1.0.jar" />
+      </plugins>
+    </profile>
+    <profile name="Maven 4" modules="flink-cep-scala_2.11 (1),flink-examples-batch_2.11 (1),flink-examples-streaming_2.11 (1),flink-examples-table_2.11 (1),flink-hadoop-compatibility_2.11 (1),flink-hcatalog_2.11 (1),flink-mesos_2.11 (1),flink-runtime_2.11 (1),flink-scala_2.11 (1),flink-table-api-scala-bridge_2.11 (1),flink-table-api-scala_2.11 (1),flink-table-planner-blink_2.11 (1),flink-table-planner_2.11 (1),flink-tests (1),flink-yarn-tests (1)">
+      <parameters>
+        <parameter value="-nobootcp" />
+        <parameter value="-target:jvm-1.8" />
+      </parameters>
+    </profile>
   </component>
 </project>

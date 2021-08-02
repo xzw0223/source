@@ -72,9 +72,12 @@ public class Follower extends Learner{
         self.end_fle = 0;
         fzk.registerJMX(new FollowerBean(this, zk), self.jmxLocalPeerBean);
         try {
+            // 找到leader
             QuorumServer leaderServer = findLeader();            
             try {
+                // 与leader简历socket连接
                 connectToLeader(leaderServer.addr, leaderServer.hostname);
+                // 像leader注册自己
                 long newEpochZxid = registerWithLeader(Leader.FOLLOWERINFO);
                 if (self.isReconfigStateChange())
                    throw new Exception("learned about role change");

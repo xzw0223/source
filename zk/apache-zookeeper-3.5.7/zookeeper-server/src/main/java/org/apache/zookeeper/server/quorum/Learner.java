@@ -199,11 +199,14 @@ public class Learner {
     protected QuorumServer findLeader() {
         QuorumServer leaderServer = null;
         // Find the leader by id
+        // 获取当前的选票  选票是由leader下发的应该
         Vote current = self.getCurrentVote();
+        // 获取zk所有的节点,根据选票中的id与节点列表中的id相互查找 相同则找到leader
         for (QuorumServer s : self.getView().values()) {
             if (s.id == current.getId()) {
                 // Ensure we have the leader's correct IP address before
                 // attempting to connect.
+                // 在尝试连接之前，确保我们有领导者的正确IP地址。
                 s.recreateSocketAddresses();
                 leaderServer = s;
                 break;
@@ -235,7 +238,8 @@ public class Learner {
 
     /**
      * Establish a connection with the Leader found by findLeader. Retries
-     * until either initLimit time has elapsed or 5 tries have happened. 
+     * until either initLimit time has elapsed or 5 tries have happened.
+     *  findLeader查找到了leader地址和hostname 则尝试进行连接,最多重新连接5次
      * @param addr - the address of the Leader to connect to.
      * @throws IOException - if the socket connection fails on the 5th attempt
      * <li>if there is an authentication failure while connecting to leader</li>
@@ -263,6 +267,7 @@ public class Learner {
                 if (self.isSslQuorum())  {
                     ((SSLSocket) sock).startHandshake();
                 }
+                // 连接成功,结束循环
                 sock.setTcpNoDelay(nodelay);
                 break;
             } catch (IOException e) {
