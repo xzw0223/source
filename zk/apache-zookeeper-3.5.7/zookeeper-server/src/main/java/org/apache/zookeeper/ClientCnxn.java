@@ -178,7 +178,7 @@ public class ClientCnxn {
      * operation)
      */
     private volatile boolean closing = false;
-    
+
     /**
      * A set of ZooKeeper hosts this client could connect to.
      */
@@ -339,6 +339,7 @@ public class ClientCnxn {
      * Creates a connection object. The actual network connect doesn't get
      * established until needed. The start() instance method must be called
      * subsequent to construction.
+     *  创建连接对象。实际的网络连接直到需要时才会建立。start()实例方法必须在构造之后调用。
      *
      * @param chrootPath - the chroot of this client. Should be removed from this Class in ZOOKEEPER-838
      * @param hostProvider
@@ -399,6 +400,7 @@ public class ClientCnxn {
         readTimeout = sessionTimeout * 2 / 3;
         readOnly = canBeReadOnly;
 
+        // 用于传递请求 和生成心跳
         sendThread = new SendThread(clientCnxnSocket);
         eventThread = new EventThread();
         this.clientConfig=zooKeeper.getClientConfig();
@@ -652,7 +654,7 @@ public class ClientCnxn {
                                     .substring(chrootPath.length())), rsp.getStat());
                       } else {
                           cb.processResult(rc, clientPath, p.ctx, null, null);
-                      }                   
+                      }
                   } else if (p.response instanceof MultiResponse) {
                 	  MultiCallback cb = (MultiCallback) p.cb;
                 	  MultiResponse rsp = (MultiResponse) p.response;
@@ -767,7 +769,7 @@ public class ClientCnxn {
         public EndOfStreamException(String msg) {
             super(msg);
         }
-        
+
         @Override
         public String toString() {
             return "EndOfStreamException: " + getMessage();
@@ -781,7 +783,7 @@ public class ClientCnxn {
             super(msg);
         }
     }
-    
+
     private static class SessionExpiredException extends IOException {
         private static final long serialVersionUID = -1388816932076193249L;
 
@@ -827,10 +829,10 @@ public class ClientCnxn {
                 return;
             }
             if (replyHdr.getXid() == -4) {
-                // -4 is the xid for AuthPacket               
+                // -4 is the xid for AuthPacket
                 if(replyHdr.getErr() == KeeperException.Code.AUTHFAILED.intValue()) {
-                    state = States.AUTH_FAILED;                    
-                    eventThread.queueEvent( new WatchedEvent(Watcher.Event.EventType.None, 
+                    state = States.AUTH_FAILED;
+                    eventThread.queueEvent( new WatchedEvent(Watcher.Event.EventType.None,
                             Watcher.Event.KeeperState.AuthFailed, null) );
                     eventThread.queueEventOfDeath();
                 }
@@ -941,7 +943,7 @@ public class ClientCnxn {
         // Runnable
         /**
          * Used by ClientCnxnSocket
-         * 
+         *
          * @return
          */
         ZooKeeper.States getZkState() {
@@ -1136,6 +1138,7 @@ public class ClientCnxn {
                         } else {
                             serverAddress = hostProvider.next(1000);
                         }
+                        // 启动连接 连接对应服务器
                         startConnect(serverAddress);
                         clientCnxnSocket.updateLastSendAndHeard();
                     }
@@ -1179,7 +1182,7 @@ public class ClientCnxn {
                     } else {
                         to = connectTimeout - clientCnxnSocket.getIdleRecv();
                     }
-                    
+
                     if (to <= 0) {
                         String warnInfo;
                         warnInfo = "Client session timed out, have not heard from server in "
@@ -1192,8 +1195,8 @@ public class ClientCnxn {
                     }
                     if (state.isConnected()) {
                     	//1000(1 second) is to prevent race condition missing to send the second ping
-                    	//also make sure not to send too many pings when readTimeout is small 
-                        int timeToNextPing = readTimeout / 2 - clientCnxnSocket.getIdleSend() - 
+                    	//also make sure not to send too many pings when readTimeout is small
+                        int timeToNextPing = readTimeout / 2 - clientCnxnSocket.getIdleSend() -
                         		((clientCnxnSocket.getIdleSend() > 1000) ? 1000 : 0);
                         //send a ping request either time is due or no packet sent out within MAX_SEND_PING_INTERVAL
                         if (timeToNextPing <= 0 || clientCnxnSocket.getIdleSend() > MAX_SEND_PING_INTERVAL) {
@@ -1220,6 +1223,7 @@ public class ClientCnxn {
                         to = Math.min(to, pingRwTimeout - idlePingRwServer);
                     }
 
+                    // TODO 接收服务端相应并处理
                     clientCnxnSocket.doTransport(to, pendingQueue, ClientCnxn.this);
                 } catch (Throwable e) {
                     if (closing) {
@@ -1356,7 +1360,7 @@ public class ClientCnxn {
         /**
          * Callback invoked by the ClientCnxnSocket once a connection has been
          * established.
-         * 
+         *
          * @param _negotiatedSessionTimeout
          * @param _sessionId
          * @param _sessionPasswd

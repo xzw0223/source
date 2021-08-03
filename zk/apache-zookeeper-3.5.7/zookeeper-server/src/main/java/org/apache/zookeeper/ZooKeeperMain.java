@@ -71,6 +71,7 @@ import org.apache.zookeeper.admin.ZooKeeperAdmin;
 
 /**
  * The command line client to ZooKeeper.
+ *  zk的客户端
  *
  */
 @InterfaceAudience.Public
@@ -295,9 +296,11 @@ public class ZooKeeperMain {
         main.run();
     }
 
-    public ZooKeeperMain(String args[]) throws IOException, InterruptedException {
+    public ZooKeeperMain(String args[]) throws IOException, InterruptedException {\
+        // 解析args
         cl.parseOptions(args);
         System.out.println("Connecting to " + cl.getOption("server"));
+        // 连接zk服务端
         connectToZK(cl.getOption("server"));
     }
 
@@ -329,7 +332,9 @@ public class ZooKeeperMain {
 
                 String line;
                 Method readLine = consoleC.getMethod("readLine", String.class);
+                // 持续接收命令进行处理
                 while ((line = (String)readLine.invoke(console, getPrompt())) != null) {
+                    // 一行一行读取命令
                     executeLine(line);
                 }
             } catch (ClassNotFoundException e) {
@@ -366,10 +371,12 @@ public class ZooKeeperMain {
         System.exit(exitCode);
     }
 
-    public void executeLine(String line) throws CliException, InterruptedException, IOException {
+    public void  executeLine(String line) throws CliException, InterruptedException, IOException {
       if (!line.equals("")) {
+          // 解析client 发送的命令
         cl.parseCommand(line);
         addToHistory(commandCount,line);
+        // 处理客户端命令
         processCmd(cl);
         commandCount++;
       }
@@ -586,6 +593,7 @@ public class ZooKeeperMain {
     protected boolean processCmd(MyCommandOptions co) throws CliException, IOException, InterruptedException {
         boolean watch = false;
         try {
+            // 处理相关的命令
             watch = processZKCmd(co);
             exitCode = 0;
         } catch (CliException ex) {

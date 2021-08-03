@@ -336,8 +336,12 @@ public class Learner {
         BinaryOutputArchive boa = BinaryOutputArchive.getArchive(bsid);
         boa.writeRecord(li, "LearnerInfo");
         qp.setData(bsid.toByteArray());
-        
+
+        // 向leader注册
         writePacket(qp, true);
+        // 当leader接收到follower的注册后,根据follower的sid和旧的epoch,构建一个新的Epoch
+        // 并发送给followers,这里会接收leader发来的epoch(zxid)
+        // 这里qp已经是leader发送来的消息了
         readPacket(qp);        
         final long newEpoch = ZxidUtils.getEpochFromZxid(qp.getZxid());
 		if (qp.getType() == Leader.LEADERINFO) {
@@ -357,6 +361,7 @@ public class Learner {
         	} else {
         		throw new IOException("Leaders epoch, " + newEpoch + " is less than accepted epoch, " + self.getAcceptedEpoch());
         	}
+        	// 当follower收到leader的消息和后,返回给leader ACK
         	QuorumPacket ackNewEpoch = new QuorumPacket(Leader.ACKEPOCH, lastLoggedZxid, epochBytes, null);
         	writePacket(ackNewEpoch, true);
             return ZxidUtils.makeZxid(newEpoch, 0);

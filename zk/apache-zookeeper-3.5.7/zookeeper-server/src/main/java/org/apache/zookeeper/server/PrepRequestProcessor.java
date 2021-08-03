@@ -131,6 +131,7 @@ public class PrepRequestProcessor extends ZooKeeperCriticalThread implements
     public void run() {
         try {
             while (true) {
+                // 从队列中取出数据  并删除
                 Request request = submittedRequests.take();
                 long traceMask = ZooTrace.CLIENT_REQUEST_TRACE_MASK;
                 if (request.type == OpCode.ping) {
@@ -142,6 +143,7 @@ public class PrepRequestProcessor extends ZooKeeperCriticalThread implements
                 if (Request.requestOfDeath == request) {
                     break;
                 }
+                // 处理请求
                 pRequest(request);
             }
         } catch (RequestProcessorException e) {
@@ -736,6 +738,7 @@ public class PrepRequestProcessor extends ZooKeeperCriticalThread implements
         request.setTxn(null);
 
         try {
+            // 根据不同的请求进行相应的处理
             switch (request.type) {
             case OpCode.createContainer:
             case OpCode.create:

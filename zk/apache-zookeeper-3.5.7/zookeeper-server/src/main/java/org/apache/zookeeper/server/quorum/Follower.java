@@ -77,7 +77,7 @@ public class Follower extends Learner{
             try {
                 // 与leader简历socket连接
                 connectToLeader(leaderServer.addr, leaderServer.hostname);
-                // 像leader注册自己
+                // 向leader注册自己
                 long newEpochZxid = registerWithLeader(Leader.FOLLOWERINFO);
                 if (self.isReconfigStateChange())
                    throw new Exception("learned about role change");
@@ -92,7 +92,9 @@ public class Follower extends Learner{
                 syncWithLeader(newEpochZxid);                
                 QuorumPacket qp = new QuorumPacket();
                 while (this.isRunning()) {
+                    // 持续接收leader发送的消息
                     readPacket(qp);
+                    // 处理数据包中的内容
                     processPacket(qp);
                 }
             } catch (Exception e) {
@@ -117,6 +119,7 @@ public class Follower extends Learner{
      * @throws IOException
      */
     protected void processPacket(QuorumPacket qp) throws Exception{
+        // 根据接收的消息类型,做出不同的处理
         switch (qp.getType()) {
         case Leader.PING:            
             ping(qp);            

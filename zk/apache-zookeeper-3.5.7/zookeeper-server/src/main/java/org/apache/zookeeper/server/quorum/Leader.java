@@ -569,6 +569,7 @@ public class Leader {
                  return;
              }
 
+             //  启动zkServer 初始化 zxid epoch
              startZkServer();
              
             /**
@@ -1207,6 +1208,7 @@ public class Leader {
             if (!waitingForNewEpoch) {
                 return epoch;
             }
+            // 如果上一次的epoch大于或者等于当前epoch 则当前epoch=上一次的epoch+1
             if (lastAcceptedEpoch >= epoch) {
                 epoch = lastAcceptedEpoch+1;
             }

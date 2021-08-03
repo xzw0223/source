@@ -280,8 +280,10 @@ public class ClientCnxnSocketNIO extends ClientCnxnSocket {
     
     @Override
     void connect(InetSocketAddress addr) throws IOException {
+        // 创建一个socketChannel
         SocketChannel sock = createSock();
         try {
+            // 向服务端注册并连接
            registerAndConnect(sock, addr);
       } catch (IOException e) {
             LOG.error("Unable to open socket to " + addr);
@@ -360,6 +362,7 @@ public class ClientCnxnSocketNIO extends ClientCnxnSocket {
                     sendThread.primeConnection();
                 }
             } else if ((k.readyOps() & (SelectionKey.OP_READ | SelectionKey.OP_WRITE)) != 0) {
+                // 处理消息
                 doIO(pendingQueue, cnxn);
             }
         }
