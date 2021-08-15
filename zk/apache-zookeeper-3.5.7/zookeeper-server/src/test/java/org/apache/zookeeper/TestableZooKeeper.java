@@ -54,10 +54,11 @@ public class TestableZooKeeper extends ZooKeeperAdmin {
         }
     }
 
+    @Override
     protected ClientCnxn createConnection(String chrootPath,
-            HostProvider hostProvider, int sessionTimeout, ZooKeeper zooKeeper,
-            ClientWatchManager watcher, ClientCnxnSocket clientCnxnSocket,
-            boolean canBeReadOnly) throws IOException {
+                                          HostProvider hostProvider, int sessionTimeout, ZooKeeper zooKeeper,
+                                          ClientWatchManager watcher, ClientCnxnSocket clientCnxnSocket,
+                                          boolean canBeReadOnly) throws IOException {
         return new TestableClientCnxn(chrootPath, hostProvider, sessionTimeout, this,
                 watcher, clientCnxnSocket, canBeReadOnly);
     }

@@ -873,14 +873,19 @@ public class ZooKeeper implements AutoCloseable {
         }
         this.clientConfig = clientConfig;
         watchManager = defaultWatchManager();
+        // client传进来的一个watcher ->  new MyWatcher
+        // 初始化监听器
         watchManager.defaultWatcher = watcher;
+        // 解析传进来的host
         ConnectStringParser connectStringParser = new ConnectStringParser(
                 connectString);
         hostProvider = aHostProvider;
 
+        // 创建连接
         cnxn = createConnection(connectStringParser.getChrootPath(),
                 hostProvider, sessionTimeout, this, watchManager,
                 getClientCnxnSocket(), canBeReadOnly);
+        // 启动内部的两个线程
         cnxn.start();
     }
 
@@ -889,6 +894,7 @@ public class ZooKeeper implements AutoCloseable {
             HostProvider hostProvider, int sessionTimeout, ZooKeeper zooKeeper,
             ClientWatchManager watcher, ClientCnxnSocket clientCnxnSocket,
             boolean canBeReadOnly) throws IOException {
+        // 创建连接对象
         return new ClientCnxn(chrootPath, hostProvider, sessionTimeout, this,
                 watchManager, clientCnxnSocket, canBeReadOnly);
     }

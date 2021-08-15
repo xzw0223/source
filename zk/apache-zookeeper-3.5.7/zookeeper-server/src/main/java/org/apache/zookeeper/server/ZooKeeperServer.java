@@ -456,6 +456,7 @@ public class ZooKeeperServer implements SessionExpirer, ServerStats.Provider {
             createSessionTracker();
         }
         startSessionTracker();
+        // 设置请求处理器
         setupRequestProcessors();
 
         registerJMX();
@@ -469,6 +470,7 @@ public class ZooKeeperServer implements SessionExpirer, ServerStats.Provider {
         RequestProcessor syncProcessor = new SyncRequestProcessor(this,
                 finalProcessor);
         ((SyncRequestProcessor)syncProcessor).start();
+        // 创建并启动
         firstProcessor = new PrepRequestProcessor(this, syncProcessor);
         ((PrepRequestProcessor)firstProcessor).start();
     }
