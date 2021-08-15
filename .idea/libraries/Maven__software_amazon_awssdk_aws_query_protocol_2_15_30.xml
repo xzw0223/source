@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: software.amazon.awssdk:aws-query-protocol:2.15.30">
+    <CLASSES>
+      <root url="jar://D:/my_maven_local_repository/software/amazon/awssdk/aws-query-protocol/2.15.30/aws-query-protocol-2.15.30.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/my_maven_local_repository/software/amazon/awssdk/aws-query-protocol/2.15.30/aws-query-protocol-2.15.30-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/my_maven_local_repository/software/amazon/awssdk/aws-query-protocol/2.15.30/aws-query-protocol-2.15.30-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

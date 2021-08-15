@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: software.amazon.awssdk:glue:2.15.32">
+    <CLASSES>
+      <root url="jar://D:/my_maven_local_repository/software/amazon/awssdk/glue/2.15.32/glue-2.15.32.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/my_maven_local_repository/software/amazon/awssdk/glue/2.15.32/glue-2.15.32-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/my_maven_local_repository/software/amazon/awssdk/glue/2.15.32/glue-2.15.32-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
