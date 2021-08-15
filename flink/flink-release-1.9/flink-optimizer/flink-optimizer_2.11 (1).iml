@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -11,6 +11,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="flink-core (2)" />
+    <orderEntry type="module" module-name="flink-annotations (2)" />
+    <orderEntry type="module" module-name="flink-metrics-core (2)" />
+    <orderEntry type="module" module-name="flink-runtime_2.11 (1)" />
+    <orderEntry type="module" module-name="flink-queryable-state-client-java (2)" />
+    <orderEntry type="module" module-name="flink-hadoop-fs (2)" />
+    <orderEntry type="module" module-name="flink-shaded-curator (1)" />
+    <orderEntry type="module" module-name="flink-java (2)" />
+    <orderEntry type="module" module-name="flink-test-utils-junit (2)" scope="TEST" />
+    <orderEntry type="module" module-name="force-shading (1)" />
     <orderEntry type="module" module-name="flink-core (2)" />
     <orderEntry type="module" module-name="flink-annotations (2)" />
     <orderEntry type="module" module-name="flink-metrics-core (2)" />

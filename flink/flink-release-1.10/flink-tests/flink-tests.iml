@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -11,6 +11,33 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="flink-core" scope="TEST" />
+    <orderEntry type="module" module-name="flink-annotations" scope="TEST" />
+    <orderEntry type="module" module-name="flink-metrics-core" scope="TEST" />
+    <orderEntry type="module" module-name="flink-core" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="flink-streaming-java_2.11" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="flink-optimizer_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-runtime_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-queryable-state-client-java" scope="TEST" />
+    <orderEntry type="module" module-name="flink-hadoop-fs" scope="TEST" />
+    <orderEntry type="module" module-name="flink-shaded-curator" scope="TEST" />
+    <orderEntry type="module" module-name="flink-runtime-web_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-runtime-web_2.11" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="flink-clients_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-java" scope="TEST" />
+    <orderEntry type="module" module-name="flink-scala_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-scala_2.11" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="flink-test-utils-junit" scope="TEST" />
+    <orderEntry type="module" module-name="flink-test-utils_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-streaming-java_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-examples-batch_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-java" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="flink-hadoop-compatibility_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-hadoop-compatibility_2.11" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="flink-optimizer_2.11" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="flink-runtime_2.11" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="flink-statebackend-rocksdb_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="force-shading" />
     <orderEntry type="module" module-name="flink-core" scope="TEST" />
     <orderEntry type="module" module-name="flink-annotations" scope="TEST" />
     <orderEntry type="module" module-name="flink-metrics-core" scope="TEST" />

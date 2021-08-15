@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -12,6 +12,33 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="flink-table-api-java-bridge_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-api-java" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-java" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-streaming-java_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-core" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-annotations" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-metrics-core" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-runtime_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-queryable-state-client-java" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-hadoop-fs" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-shaded-curator" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-clients_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-optimizer_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-test-utils_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-runtime_2.11" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="flink-table-planner_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-table-common" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-api-scala-bridge_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-scala_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-streaming-scala_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-sql-parser" scope="TEST" />
+    <orderEntry type="module" module-name="flink-table-planner-blink_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-table-api-scala_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-table-runtime-blink_2.11" scope="TEST" />
+    <orderEntry type="module" module-name="flink-table-planner_2.11" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="flink-test-utils-junit" scope="TEST" />
+    <orderEntry type="module" module-name="force-shading" />
     <orderEntry type="module" module-name="flink-table-api-java-bridge_2.11" scope="PROVIDED" />
     <orderEntry type="module" module-name="flink-table-api-java" scope="PROVIDED" />
     <orderEntry type="module" module-name="flink-java" scope="PROVIDED" />

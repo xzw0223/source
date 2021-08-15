@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -11,6 +11,73 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="flink-core" />
+    <orderEntry type="module" module-name="flink-annotations" />
+    <orderEntry type="module" module-name="flink-java" />
+    <orderEntry type="module" module-name="flink-scala_2.11" />
+    <orderEntry type="module" module-name="flink-runtime_2.11" />
+    <orderEntry type="module" module-name="flink-queryable-state-client-java" />
+    <orderEntry type="module" module-name="flink-shaded-curator" />
+    <orderEntry type="module" module-name="flink-runtime-web_2.11" />
+    <orderEntry type="module" module-name="flink-optimizer_2.11" />
+    <orderEntry type="module" module-name="flink-clients_2.11" />
+    <orderEntry type="module" module-name="flink-streaming-java_2.11" />
+    <orderEntry type="module" module-name="flink-streaming-scala_2.11" />
+    <orderEntry type="module" module-name="flink-metrics-core" />
+    <orderEntry type="module" module-name="flink-metrics-jmx_2.11" />
+    <orderEntry type="module" module-name="flink-mesos_2.11" />
+    <orderEntry type="module" module-name="flink-container_2.11" />
+    <orderEntry type="module" module-name="flink-statebackend-rocksdb_2.11" />
+    <orderEntry type="module" module-name="flink-kubernetes_2.11" />
+    <orderEntry type="module" module-name="flink-yarn_2.11" />
+    <orderEntry type="module" module-name="flink-hadoop-fs" />
+    <orderEntry type="module" module-name="flink-mapr-fs" />
+    <orderEntry type="module" module-name="flink-examples-batch_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-examples-streaming_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-twitter_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-kafka-0.10_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-kafka-0.9_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-kafka-base_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-examples-streaming-state-machine_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-examples-streaming-twitter_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-gelly-examples_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-examples-table_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-api-java-bridge_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-api-scala-bridge_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-planner_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-planner-blink_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-metrics-dropwizard" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-metrics-graphite" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-metrics-influxdb_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-metrics-prometheus_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-metrics-statsd" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-metrics-datadog" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-metrics-slf4j" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-cep_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-cep-scala_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-gelly_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-gelly-scala_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-uber_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-common" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-sql-parser" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-api-java" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-api-scala_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-uber-blink_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-table-runtime-blink_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-sql-client_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-state-processor-api_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-azure-fs-hadoop" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-fs-hadoop-shaded" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-s3-fs-hadoop" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-s3-fs-base" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-s3-fs-presto" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-swift-fs-hadoop" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-oss-fs-hadoop" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-queryable-state-runtime_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-python_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-test-utils-junit" scope="TEST" />
+    <orderEntry type="module" module-name="flink-scala-shell_2.11" />
+    <orderEntry type="module" module-name="force-shading" />
     <orderEntry type="module" module-name="flink-core" />
     <orderEntry type="module" module-name="flink-annotations" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-shaded-asm-7:7.1-9.0" level="project" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -9,6 +9,28 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="flink-table-common" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-core" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-annotations" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-metrics-core" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-avro" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-json" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-csv" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-sql-connector-kafka-0.9_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-kafka-0.9_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-kafka-base_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-sql-connector-kafka-0.10_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-kafka-0.10_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-sql-connector-kafka-0.11_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-kafka-0.11_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-sql-connector-kafka_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-kafka_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-sql-connector-elasticsearch6_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-elasticsearch6_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-elasticsearch-base_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-sql-connector-elasticsearch7_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-elasticsearch7_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="force-shading" />
     <orderEntry type="module" module-name="flink-table-common" scope="PROVIDED" />
     <orderEntry type="module" module-name="flink-core" scope="PROVIDED" />
     <orderEntry type="module" module-name="flink-annotations" scope="PROVIDED" />

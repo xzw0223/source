@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -9,6 +9,19 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="flink-streaming-java_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-core" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-annotations" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-metrics-core" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-runtime_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-java" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-queryable-state-client-java" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-hadoop-fs" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-shaded-curator" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-clients_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-optimizer_2.11" scope="PROVIDED" />
+    <orderEntry type="module" module-name="flink-connector-filesystem_2.11" />
+    <orderEntry type="module" module-name="force-shading" />
     <orderEntry type="module" module-name="flink-streaming-java_2.11" scope="PROVIDED" />
     <orderEntry type="module" module-name="flink-core" scope="PROVIDED" />
     <orderEntry type="module" module-name="flink-annotations" scope="PROVIDED" />
