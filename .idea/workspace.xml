@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="310580fa-308d-400e-9eb0-53ea135eb79b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/flink/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/flink/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_nimbusds_nimbus_jose_jwt_9_12_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
@@ -51,6 +58,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="ServiceViewManager">
@@ -77,7 +85,7 @@
       <updated>1627911961883</updated>
       <workItem from="1627911967829" duration="4481000" />
       <workItem from="1628923087042" duration="2179000" />
-      <workItem from="1628951921059" duration="17773000" />
+      <workItem from="1628951921059" duration="18088000" />
     </task>
     <task id="LOCAL-00001" summary="leader-follower">
       <created>1627922475411</created>
@@ -93,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629044265692</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="flink的提交流程&#10;  CliFrontend -&gt; StreamExecutionEnvironment.execute -&gt; YarnJobClusterEntrypoint.main &#10;  &#10;  到创建ResourceMangerService..">
+      <created>1629044615378</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1629044615378</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,17 +117,22 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="leader-follower" />
     <MESSAGE value="flink的提交流程&#10;  CliFrontend -&gt; StreamExecutionEnvironment.execute -&gt; YarnJobClusterEntrypoint.main &#10;  &#10;  到创建ResourceMangerService" />
-    <option name="LAST_COMMIT_MESSAGE" value="flink的提交流程&#10;  CliFrontend -&gt; StreamExecutionEnvironment.execute -&gt; YarnJobClusterEntrypoint.main &#10;  &#10;  到创建ResourceMangerService" />
+    <MESSAGE value="flink的提交流程&#10;  CliFrontend -&gt; StreamExecutionEnvironment.execute -&gt; YarnJobClusterEntrypoint.main &#10;  &#10;  到创建ResourceMangerService.." />
+    <option name="LAST_COMMIT_MESSAGE" value="flink的提交流程&#10;  CliFrontend -&gt; StreamExecutionEnvironment.execute -&gt; YarnJobClusterEntrypoint.main &#10;  &#10;  到创建ResourceMangerService.." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="57" y="10" key="CommitChangelistDialog2" timestamp="1629044255269">
+    <state x="57" y="0" key="CommitChangelistDialog2" timestamp="1629044610036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="57" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1629044255269" />
-    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1627911996014">
+    <state x="57" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1629044610036" />
+    <state x="147" y="71" key="DiffContextDialog" timestamp="1629044630864">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1627911996014" />
+    <state x="147" y="71" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1629044630864" />
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1629044971781">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629044971781" />
     <state x="272" y="58" key="SettingsEditor" timestamp="1627911998274">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -121,10 +141,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="490" y="154" width="540" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1629033228421" />
-    <state x="361" y="149" key="Vcs.Push.Dialog.v2" timestamp="1629044493434">
+    <state x="361" y="149" key="Vcs.Push.Dialog.v2" timestamp="1629044897582">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="149" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1629044493434" />
+    <state x="361" y="149" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1629044897582" />
     <state x="461" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1628951957415">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
